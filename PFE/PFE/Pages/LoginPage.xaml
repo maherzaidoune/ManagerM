@@ -49,7 +49,7 @@
             </StackLayout>
         </StackLayout>
         <ActivityIndicator Grid.Row="2" Grid.ColumnSpan="2" IsVisible="{Binding isBusy }" IsRunning="{Binding isBusy }" ></ActivityIndicator>
-        <Button Grid.Row="2" Grid.Column="0" BackgroundColor="#33691e" Text="Connecter" IsVisible="{Binding isEnabled}" Command="{Binding validate}" ></Button>
-        <Button Grid.Row="2" Grid.Column="1" BackgroundColor="#b71c1c" Text="Quitter" IsVisible="{Binding isEnabled}" Command="{Binding quit}" ></Button>
+        <Button Grid.Row="2" TextColor="White" Grid.Column="0" BackgroundColor="#33691e" Text="Connecter" IsVisible="{Binding isEnabled}" Command="{Binding validate}" ></Button>
+        <Button Grid.Row="2" TextColor="White" Grid.Column="1" BackgroundColor="#b71c1c" Text="Quitter" IsVisible="{Binding isEnabled}" Command="{Binding quit}" ></Button>
     </Grid>
 </ContentPage>

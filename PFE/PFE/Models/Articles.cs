@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PFE.Models
 {
-    public class Articles_2
+    public class Articles
     {
     public int ARTID { get; set; }
     public string ARTCODEBARRE { get; set; }

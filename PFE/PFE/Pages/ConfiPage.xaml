@@ -33,7 +33,7 @@
                 <Entry Placeholder="password" WidthRequest="195" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="EndAndExpand" Margin="5" HeightRequest="40" IsPassword="True"  Text="{Binding passord , Mode=OneWayToSource}"  />
             </StackLayout>
         </StackLayout>
-        <Button Grid.Row="2" Grid.Column="0" BackgroundColor="#33691e" Text="Valider" Command="{Binding valider}" ></Button>
-        <Button Grid.Row="2" Grid.Column="1" BackgroundColor="#ad1457" Text="Tester" Command="{Binding tester}" ></Button>
+        <Button Grid.Row="2" TextColor="White" Grid.Column="0" BackgroundColor="#33691e" Text="Valider" Command="{Binding valider}" ></Button>
+        <Button Grid.Row="2" TextColor="White" Grid.Column="1" BackgroundColor="#ad1457" Text="Tester" Command="{Binding tester}" ></Button>
     </Grid>
 </ContentPage>
