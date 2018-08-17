@@ -8,11 +8,16 @@
             <RowDefinition Height="5*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        <StackLayout Grid.Row="0">
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
-            <Label Text="Groupe  "  VerticalOptions="Center"/>
-            <controls:CustomPicker HorizontalOptions="EndAndExpand"
+        <ScrollView Grid.Row="0" Grid.ColumnSpan="2" Padding="0,5,0,0" >
+            <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill" >
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
+                    <Label Text="Groupe  "  VerticalOptions="Center"/>
+                    <controls:CustomPicker HorizontalOptions="EndAndExpand"
                      HeightRequest="40" 
                      WidthRequest="200"
                      ItemsSource="{Binding nature}"
@@ -20,16 +25,19 @@
                      SelectedItem="{Binding selectednature}"
                      Image="down"
                      Title="nature">
-            </controls:CustomPicker>
-        </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
-                <Label Text="Numero piece  " VerticalOptions="Center"/>
-                <Entry Placeholder="Numero piece.." WidthRequest="195" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="EndAndExpand" Margin="5" HeightRequest="40"  Text="{Binding numeroPiece , Mode=OneWayToSource}"  />
-            </StackLayout>
-            <DatePicker Date="{Binding date,Mode=TwoWay}" TextColor="White"  BackgroundColor="Transparent"  HorizontalOptions="StartAndExpand" />
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
-                <Label Text="Depot  "  VerticalOptions="Center"/>
-                <controls:CustomPicker HorizontalOptions="EndAndExpand"
+                    </controls:CustomPicker>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
+                    <Label Text="Numero piece  " VerticalOptions="Center"/>
+                    <Entry Placeholder="Numero piece.." WidthRequest="195" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="EndAndExpand" Margin="5" HeightRequest="40"  Text="{Binding numeroPiece , Mode=OneWayToSource}"  />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
+                    <Label Text="Date  " VerticalOptions="Center"/>
+                    <DatePicker Date="{Binding date,Mode=TwoWay}" TextColor="Black" WidthRequest="195" BackgroundColor="Transparent"  HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
+                    <Label Text="Depot  "  VerticalOptions="Center"/>
+                    <controls:CustomPicker HorizontalOptions="EndAndExpand"
                      HeightRequest="40" 
                      WidthRequest="200"
                      ItemsSource="{Binding depot}"
@@ -37,28 +45,30 @@
                      SelectedItem="{Binding selectedDepot}"
                      Image="down"
                      Title="depot">
-                </controls:CustomPicker>
+                    </controls:CustomPicker>
+                </StackLayout>
+                <Button HorizontalOptions="Fill" Text="Compte tier" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
+                    <Label Text="Numero Fournisseur  " VerticalOptions="Center"/>
+                    <Entry Placeholder="Numero Fournisseur.." WidthRequest="195" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="EndAndExpand" Margin="5" HeightRequest="40"  Text="{Binding numerofournisseur , Mode=OneWayToSource}"  />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
+                    <Label Text="Intitulé  " VerticalOptions="Center"/>
+                    <Entry Placeholder="Intitulé.." WidthRequest="195" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="EndAndExpand" Margin="5" HeightRequest="40"  Text="{Binding fournisseurintitule , Mode=OneWayToSource}"  />
+                </StackLayout>
+                <Button HorizontalOptions="Fill" Text="Affaire" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
+                    <Label Text="Code affaire " VerticalOptions="Center"/>
+                    <Entry Placeholder="Code affairer.." WidthRequest="195" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="EndAndExpand" Margin="5" HeightRequest="40"  Text="{Binding Codeaffaire , Mode=OneWayToSource}"  />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
+                    <Label Text="Intitulé  " VerticalOptions="Center"/>
+                    <Entry Placeholder="Intitulé.." WidthRequest="195" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="EndAndExpand" Margin="5" HeightRequest="40"  Text="{Binding affaireintitule , Mode=OneWayToSource}"  />
+                </StackLayout>
             </StackLayout>
-            <Button HorizontalOptions="Fill" Text="Compte tier" />
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
-                <Label Text="Numero Fournisseur  " VerticalOptions="Center"/>
-                <Entry Placeholder="Numero Fournisseur.." WidthRequest="195" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="EndAndExpand" Margin="5" HeightRequest="40"  Text="{Binding numerofournisseur , Mode=OneWayToSource}"  />
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
-                <Label Text="Intitulé  " VerticalOptions="Center"/>
-                <Entry Placeholder="Intitulé.." WidthRequest="195" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="EndAndExpand" Margin="5" HeightRequest="40"  Text="{Binding fournisseurintitule , Mode=OneWayToSource}"  />
-            </StackLayout>
-            <Button HorizontalOptions="Fill" Text="Affaire" />
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
-                <Label Text="Code affaire " VerticalOptions="Center"/>
-                <Entry Placeholder="Code affairer.." WidthRequest="195" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="EndAndExpand" Margin="5" HeightRequest="40"  Text="{Binding Codeaffaire , Mode=OneWayToSource}"  />
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
-                <Label Text="Intitulé  " VerticalOptions="Center"/>
-                <Entry Placeholder="Intitulé.." WidthRequest="195" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="EndAndExpand" Margin="5" HeightRequest="40"  Text="{Binding affaireintitule , Mode=OneWayToSource}"  />
-            </StackLayout>
-        </StackLayout>
-        <Button Grid.Row="2" TextColor="White"  BackgroundColor="#33691e" Text="Ajouter" IsVisible="{Binding isEnabled}" Command="{Binding validate}" ></Button>
 
+        </ScrollView>
+        <Button Grid.Row="1" Grid.Column="0" TextColor="White"  BackgroundColor="#33691e" Text="Ajouter" IsVisible="{Binding isEnabled}" Command="{Binding validate}" ></Button>
+        <Button Grid.Row="1" Grid.Column="1" TextColor="White"  BackgroundColor="#b71c1c" Text="Quitter" IsVisible="{Binding isEnabled}" Command="{Binding quit}" ></Button>
     </Grid>
 </ContentPage>

@@ -16,7 +16,9 @@ namespace PFE.Pages
 
         public SellEntetePage ()
 		{
-			InitializeComponent ();
+            if (Device.RuntimePlatform == Device.Android)
+                NavigationPage.SetHasNavigationBar(this, false);
+            InitializeComponent ();
 		}
 	}
 }

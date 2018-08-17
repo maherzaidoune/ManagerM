@@ -185,4 +185,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\SIMSOFT.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\details.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\valid.png" />
+  </ItemGroup>
 </Project>

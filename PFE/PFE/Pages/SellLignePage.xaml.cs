@@ -10,13 +10,13 @@ using Xamarin.Forms.Xaml;
 namespace PFE.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SellMainPage : ContentPage
-    {
-		public SellMainPage ()
+	public partial class SellLignePage : ContentPage
+	{
+		public SellLignePage ()
 		{
             if (Device.RuntimePlatform == Device.Android)
                 NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent ();
-        }
+		}
 	}
 }

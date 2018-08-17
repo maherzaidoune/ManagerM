@@ -13,7 +13,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Button Grid.Row="0" TextColor="White" Grid.Column="0" BackgroundColor="#283593" Text="saisie d'un devis" ></Button>
+        <Button Grid.Row="0" TextColor="White" Grid.Column="0" BackgroundColor="#283593" Text="saisie d'un devis" Command="{Binding devis}" ></Button>
         <Button Grid.Row="0" TextColor="White" Grid.Column="1" BackgroundColor="#ad1457" Text="bon de command" ></Button>
         <Button Grid.Row="1" TextColor="White" Grid.Column="0" BackgroundColor="#ffb300" Text="bon de livraison"  ></Button>
         <Button Grid.Row="1" TextColor="White" Grid.Column="1" BackgroundColor="#5d4037" Text="bon de retour" ></Button>

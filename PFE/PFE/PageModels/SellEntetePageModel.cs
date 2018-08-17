@@ -21,6 +21,7 @@ namespace PFE.PageModels
         public string affaireintitule { get; set; }
         public SellEntetePageModel()
         {
+            date = DateTime.Today;
 
         }
         public override void Init(object initData)
