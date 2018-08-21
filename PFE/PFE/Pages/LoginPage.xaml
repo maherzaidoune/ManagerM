@@ -40,16 +40,17 @@
                      ItemsSource="{Binding _user}"
                      ItemDisplayBinding="{Binding USRLOGIN}"
                      SelectedItem="{Binding selecteduser}"
+                                       IsEnabled="{Binding isEnabled}"
                      Title="Admin">
                 </controls:CustomPicker>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
+            <StackLayout IsVisible="{Binding isEnabled}" Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
                 <Label Text="Mot de Passe  " VerticalOptions="Center"/>
                 <Entry Placeholder="  Mot de passe" WidthRequest="195" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="EndAndExpand" Margin="5" HeightRequest="40"  IsPassword="True" Text="{Binding password , Mode=OneWayToSource}"  />
             </StackLayout>
         </StackLayout>
-        <ActivityIndicator Grid.Row="2" Grid.ColumnSpan="2" IsVisible="{Binding isBusy }" IsRunning="{Binding isBusy }" ></ActivityIndicator>
-        <Button Grid.Row="2" TextColor="White" Grid.Column="0" BackgroundColor="#33691e" Text="Connecter" IsVisible="{Binding isEnabled}" Command="{Binding validate}" ></Button>
-        <Button Grid.Row="2" TextColor="White" Grid.Column="1" BackgroundColor="#b71c1c" Text="Quitter" IsVisible="{Binding isEnabled}" Command="{Binding quit}" ></Button>
+        <ActivityIndicator Color="Red" Grid.Row="2" Grid.ColumnSpan="2" IsVisible="{Binding loading }" IsRunning="{Binding loading }" ></ActivityIndicator>
+        <Button Grid.Row="2" TextColor="White" Grid.Column="0" BackgroundColor="#33691e" IsVisible="{Binding isEnabled}" IsEnabled="{Binding isEnabled}" Text="Connecter"  Command="{Binding validate}" ></Button>
+        <Button Grid.Row="2" TextColor="White" Grid.Column="1" BackgroundColor="#b71c1c" IsVisible="{Binding isEnabled}" IsEnabled="{Binding isEnabled}" Text="Quitter"  Command="{Binding quit}" ></Button>
     </Grid>
 </ContentPage>

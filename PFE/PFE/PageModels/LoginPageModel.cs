@@ -14,15 +14,18 @@ namespace PFE.PageModels
     [AddINotifyPropertyChangedInterface]
     class LoginPageModel : FreshMvvm.FreshBasePageModel
     {
-        private IDialogService _dialogServices;
+        private IDialogService _dialogService;
+        public IRestServices _restServices;
+        public string password { get; set; }
 
-        public LoginPageModel(IDialogService _dialogService)
+        public LoginPageModel(IDialogService _dialogService,IRestServices _restServices)
         {
-            this._dialogServices = _dialogService;
+            this._dialogService = _dialogService;
+            this._restServices = _restServices;
         }
 
-        public bool isBusy { get; set; }
         public bool isEnabled { get; set; }
+        public bool loading { get; set; }
 
 
         public ICommand validate => new Command(login);
@@ -31,38 +34,35 @@ namespace PFE.PageModels
 
             if(selectedrole == null || selecteduser == null)
             {
-                _dialogServices.ShowMessage("make sure you select a valid user and role ", true);
+                _dialogService.ShowMessage("make sure you select a valid user and role ", true);
             }
             else
             {
-                isEnabled = false;
-                isBusy = true;
-                Task.Delay(3000);
-                Task.Run(() =>
+                if (selecteduser.USRPWD == password)
                 {
-                    // call api server simulate
-                    _dialogServices.ShowMessage("Login success : " + selecteduser.USRLOGIN, false);
+                    _dialogService.ShowMessage("Login success : " + selecteduser.USRLOGIN, false);
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         switch (selectedrole.INTITULEGRP)
                         {
-                            case "Administrator":
+                            case "admin":
                                 await CoreMethods.PushPageModel<AdminMenuPageModel>();
                                 RaisePropertyChanged();
                                 break;
-                            case "User":
+                            case "vente":
                                 await CoreMethods.PushPageModel<SellerMenuPageModel>();
                                 RaisePropertyChanged();
                                 break;
                             default:
-                                _dialogServices.ShowMessage("ERROR", true);
+                                _dialogService.ShowMessage("ERROR", true);
                                 break;
                         }
-                        isBusy = false;
-                        isEnabled = true;
                     });
-                });
-                
+                }
+                else
+                {
+                    _dialogService.ShowMessage("Invalid Password " + selecteduser.USRLOGIN, true);
+                }
             }
              
         }
@@ -75,39 +75,67 @@ namespace PFE.PageModels
         }
 
 
-        public UTILISATEURSGRP selectedrole { get; set; }
+        private UTILISATEURSGRP _selectedrole;
+        public UTILISATEURSGRP selectedrole { get {
+                return _selectedrole;
+            } set {
+                _selectedrole = value;
+                loading = true;
+                Task.Run(async () =>
+                {
+                    _user = await _restServices.GetUserByGroupIdAsync(_selectedrole.CODEGRP.ToString());
+                }).Wait();
+                if (_user != null)
+                {
+                    isEnabled = true;
+                    loading = false;
+                }
+
+            }
+        }
       
 
         public UTILISATEUR selecteduser { get; set; }
         
 
         //mocking role and user  list
-        public List<UTILISATEURSGRP> _role { get; set; }
-        public List<UTILISATEUR> _user { get; set; }
-
-        public LoginPageModel()
-        {
-            
-        }
+        public IList<UTILISATEURSGRP> _role { get; set; }
+        public IList<UTILISATEUR> _user { get; set; }
         public override void Init(object initData)
         {
             base.Init(initData);
-            _role = new List<UTILISATEURSGRP>
-        {
-            new UTILISATEURSGRP(){ INTITULEGRP = "Administrator"},
-            new UTILISATEURSGRP(){ INTITULEGRP = "User"}
-        };
+            //    _role = new List<UTILISATEURSGRP>
+            //{
+            //    new UTILISATEURSGRP(){ INTITULEGRP = "Administrator"},
+            //    new UTILISATEURSGRP(){ INTITULEGRP = "User"}
+            //};
 
-            
 
-            _user = new List<UTILISATEUR>
-        {
-            new UTILISATEUR(){ USRLOGIN = "maher"},
-            new UTILISATEUR(){ USRLOGIN = "Randa"},
-            new UTILISATEUR(){ USRLOGIN = "Bahloul"},
-        };
-            isBusy = false;
-            isEnabled = true;
+
+            //    _user = new List<UTILISATEUR>
+            //{
+            //    new UTILISATEUR(){ USRLOGIN = "maher"},
+            //    new UTILISATEUR(){ USRLOGIN = "Randa"},
+            //    new UTILISATEUR(){ USRLOGIN = "Bahloul"},
+            //};
+            Task.Run(async () =>
+            {
+                try
+                {
+                    _role = await _restServices.GetGroupAsync();
+                    // _user = await _restServices.GetUserByGroupIdAsync(selectedrole.CODEGRP.ToString());
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    _dialogService.ShowMessage("ERROR" + e.StackTrace, true);
+                    _role = null;
+                    _user = null;
+                }
+                
+            });
+            isEnabled = false;
+            loading = false;
         }
     }
 }
