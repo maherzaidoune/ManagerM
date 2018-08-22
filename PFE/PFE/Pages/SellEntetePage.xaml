@@ -47,7 +47,7 @@
                      Title="depot">
                     </controls:CustomPicker>
                 </StackLayout>
-                <Button HorizontalOptions="Fill" Text="Compte tier" />
+                <Button HorizontalOptions="Fill" Text="Compte tier" Command="{Binding tiers}" />
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
                     <Label Text="Numero Fournisseur  " VerticalOptions="Center"/>
                     <Entry Placeholder="Numero Fournisseur.." WidthRequest="195" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="EndAndExpand" Margin="5" HeightRequest="40"  Text="{Binding numerofournisseur , Mode=OneWayToSource}"  />

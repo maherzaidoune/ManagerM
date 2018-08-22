@@ -12,6 +12,12 @@ namespace PFE.PageModels
     class SellMainPageModel : FreshMvvm.FreshBasePageModel
     {
         public ICommand devis => new Command(_devis);
+        public ICommand bondecommand => new Command(_bondecommand);
+
+        private void _bondecommand(object obj)
+        {
+            Navigation.initTabs();
+        }
 
         private void _devis(object obj)
         {

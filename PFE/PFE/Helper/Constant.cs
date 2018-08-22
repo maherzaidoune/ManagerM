@@ -16,11 +16,7 @@ namespace PFE.Helper
                 if (string.IsNullOrEmpty(_baseUrl))
                     throw new Exception(" _baseUr is null ");
                 return _baseUrl + "/api/UTILISATEURs";
-            }
-            set
-            {
-                user_uri = value;
-            }     
+            }  
             }
         public string group_uri
         {
@@ -30,9 +26,30 @@ namespace PFE.Helper
                     throw new Exception(" _baseUr is null ");
                 return _baseUrl + "/api/UTILISATEURSGRPs";
             }
-            set
+        }
+
+        public string tiers_uri { get {
+                if (string.IsNullOrEmpty(_baseUrl))
+                    throw new Exception(" _baseUr is null ");
+                return _baseUrl + "/api/TIERs";
+            }
+        }
+        public string piece_nature_uri
+        {
+            get
             {
-                user_uri = value;
+                if (string.IsNullOrEmpty(_baseUrl))
+                    throw new Exception(" _baseUr is null ");
+                return _baseUrl + "/api/PIECE_NATUREs";
+            }
+        }
+        public string depot_url
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_baseUrl))
+                    throw new Exception(" _baseUr is null ");
+                return _baseUrl + "/api/DEPOTs";
             }
         }
 

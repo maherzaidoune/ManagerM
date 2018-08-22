@@ -6,10 +6,8 @@ namespace PFE.Models
 {
     public partial class UTILISATEURSGRP
     {
-      
-        public long CODEGRP { get; set; }
 
-     
+        public int CODEGRP { get; set; }
         public string INTITULEGRP { get; set; }
     }
 }
